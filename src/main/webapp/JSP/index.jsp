@@ -8,9 +8,11 @@
 <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
 	<link rel="stylesheet" href="../style.css">
+	
+
 </head>  
 <body>
-    <form class="formulario" name="loginForm" method="post" action="../loginServlet"> 
+    <form class="formulario">
     
     <h1>Login</h1>
      <div class="contenedor">
