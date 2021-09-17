@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class loginServlet
  */
-@WebServlet("../loginServlet")
+@WebServlet("/loginServlet")
 public class loginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,17 +34,17 @@ public class loginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String usuario = request.getParameter("username");
+		String correo = request.getParameter("email");
         String contrasena = request.getParameter("password");
          
-        System.out.println("Usuario: " + usuario);
+        System.out.println("Correo: " + correo);
         System.out.println("Contraseña: " + contrasena);
  
         PrintWriter writer = response.getWriter();
          
         String respuestaHTML = "<html>";
-        respuestaHTML += "<h2>Nombre de usuario: " + usuario + "<br/>";      
-        respuestaHTML += "Contraseña: " + contrasena + "</h2>";    
+        respuestaHTML += "<h2>Correo Ingresado: " + correo + "<br/>";      
+        respuestaHTML += "Contraseña Ingresada: " + contrasena + "</h2>";    
         respuestaHTML += "</html>";
         
         writer.println(respuestaHTML);
