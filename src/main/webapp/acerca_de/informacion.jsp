@@ -31,7 +31,7 @@
             <li>Gómez Gómez Emilio</li>
             <li>Gonzáles Gutiérrez Geraldine</li>
             <li>Muñoz Carvajalino Cristian Camilo</li>
-            <li>Parraga Peñaloza juan camilo</li>
+            <li>Parraga Peñaloza Juan Camilo</li>
         </ol>
     </main>
 </body>

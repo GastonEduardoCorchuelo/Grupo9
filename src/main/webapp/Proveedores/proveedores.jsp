@@ -39,7 +39,7 @@
                 <input type="text" placeholder="Ingrese proveedor">
 
                 <label> Ciudad </label>
-                <input type="password" placeholder="Ingrese la ciudad">
+                <input type="text" placeholder="Ingrese la ciudad">
             </div>
             <div class="field1">
                 <label>Dirección</label>

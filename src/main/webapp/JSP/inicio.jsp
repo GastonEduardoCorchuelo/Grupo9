@@ -7,20 +7,25 @@
 <title>Tienda Genérica</title>
 </head>
 <body>
-<h1>Tienda Generica</h1>
-	 <div class="links-pages">
-            <ul>
-                <li><a href="../usuarios/usuarios.jsp">Usuarios</a></li>
-                <li><a href="../clientes/clientes.jsp">Clientes</a></li>
-                <li><a href="../proveedores/proveedores.jsp">Proveedores</a></li>
-                <li><a href="../productos/productos.jsp">Productos</a></li>
-                <li><a href="../ventas/ventas.jsp">Ventas</a></li>
-                <li><a href="../aeportes/reportes.jsp">Reportes</a></li>
-                <li><a href="../acerca_de/informacion.jsp">Acerca de</a></li>
-            </ul>
-        </div>
-	
-	<form method="get" action="./inicio">
+	<h1>Tienda Generica</h1>
+	<div style="text-align: center">
+			<h1>Bienvenido a la página de inicio</h1>
+			<b>${usuario.usuario} | (${usuario.email})</b> <br> <br> <a
+				href="${pageContext.request.contextPath }/LogoutServlet">Cerrar sesión</a>
+	</div>
+	<div class="links-pages">
+		<ul>
+			<li><a href="../usuarios/usuarios.jsp">Usuarios</a></li>
+			<li><a href="../clientes/clientes.jsp">Clientes</a></li>
+			<li><a href="../proveedores/proveedores.jsp">Proveedores</a></li>
+			<li><a href="../productos/productos.jsp">Productos</a></li>
+			<li><a href="../ventas/ventas.jsp">Ventas</a></li>
+			<li><a href="../aeportes/reportes.jsp">Reportes</a></li>
+			<li><a href="../acerca_de/informacion.jsp">Acerca de</a></li>
+		</ul>
+	</div>
+
+	<form method="get" action="/inicio.jsp">
 		<table>
 			<tr>
 				<td><label>Cedula:</label></td>
