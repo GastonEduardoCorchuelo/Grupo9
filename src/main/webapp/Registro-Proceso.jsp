@@ -4,7 +4,6 @@
 <%
 String cedula = request.getParameter("cedula");
 String nombres = request.getParameter("nombres");
-String apellidos = request.getParameter("apellidos");
 String email = request.getParameter("email");
 String usuario = request.getParameter("usuario");
 String password = request.getParameter("password");
@@ -15,8 +14,8 @@ try {
 	"root", "8Q[J_.9pF9wU#=pf");
 	Statement st = conn.createStatement();
 	int i = st.executeUpdate(
-	"insert into usuario(cedula_usuario,nombres_usuario,apellidos_usuario,email_usuario,usuario,password)values("
-			+ cedula + ",'" + nombres + "','" + apellidos + "','" + email + "','" + usuario + "','" + password
+	"insert into usuarios(cedula_usuario,nombre_usuario,email_usuario,usuario,password)values("
+			+ cedula + ",'" + nombres + "','" + email + "','" + usuario + "','" + password
 			+ "')");
 	out.println("Gracias por registrarte!</br><a href='index.jsp'>Inicia sesión</a> para continuar.");
 

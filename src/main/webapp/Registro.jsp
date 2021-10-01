@@ -30,11 +30,6 @@
 			</div>
 
 			<div class="input-contenedor">
-				<i class="fas fa-user icon"></i> <input type="text" name="apellidos"
-					placeholder="Apellidos completos" required>
-			</div>
-
-			<div class="input-contenedor">
 				<i class="fas fa-envelope icon"></i> <input type="text" name="email"
 					placeholder="Correo Electrónico" required>
 			</div>
