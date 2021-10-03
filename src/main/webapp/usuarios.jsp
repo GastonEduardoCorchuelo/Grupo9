@@ -1,83 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="co.edu.unbosque.ciclo3.Usuarios"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Creacion de Usuario</title>
+<title>Creacion de Usuario - Tienda genérica</title>
 </head>
 <body>
 	<h2>Usuarios</h2>
 	<div class="row">
 		<div class="card col-md-4">
 			<div class="card-body">
-				<div>
-					<form class="form-sign" method="get" action="Controlador">
-
-						<div class="form-group">
-							<input type="hidden" name="menu" value="usuarios"> <label>Cedula:</label>
-							<input type="number" name="cedula" class="form-control"
-								value="${usuarioSeleccionado.getCedula_usuario()}">
-						</div>
-						<div class="form-group">
-							<label>Nombre:</label> <input type="text" name="nombre"
-								class="form-control"
-								value="${usuarioSeleccionado.getNombre_usuario()}">
-						</div>
-						<div class="form-group">
-							<label>Email:</label> <input type="text" name="email"
-								class="form-control"
-								value="${usuarioSeleccionado.getEmail_usuario()}">
-						</div>
-						<div class="form-group">
-							<label>Usuario:</label> <input type="text" name="usuario"
-								class="form-control" value="${usuarioSeleccionado.getUsuario()}">
-						</div>
-						<div class="form-group">
-							<label>Password:</label> <input type="password" name="password"
-								class="form-control"
-								value="${usuarioSeleccionado.getPassword()}">
-						</div>
-						<h2>
-							<input type="submit" class="btn btn-primary" name="accion"
-								value="Agregar"> <input type="submit"
-								class="btn btn-success" name="accion" value="Actualizar">
-						</h2>
-						<%
-						ArrayList<Usuarios> lista = new ArrayList<Usuarios>();
-						%>
-						<table class="table" border="1">
-							<caption>Listado de usuarios</caption>
+				<form method="post" action="ControladorUsuarios">
+					<h2>
+						<a href="ControladorUsuarios?action=nuevo">Agregar nuevo
+							usuario</a> &nbsp;&nbsp;&nbsp; <a
+							href="ControladorUsuarios?action=listar">Listar usuarios</a>
+					</h2>
+					<p>${message}</p>
+					<table class="table" border="1">
+						<caption>Listado de usuarios</caption>
+						<tr>
+							<th>Cédula</th>
+							<th>Nombre</th>
+							<th>Correo Electrónico</th>
+							<th>Usuario</th>
+							<th>Acciones</th>
+						</tr>
+						<c:forEach var="usuario" items="${usuario}">
 							<tr>
-								<th>Cédula</th>
-								<th>Nombre</th>
-								<th>Correo Electrónico</th>
-								<th>Usuario</th>
-								<th>Contraseña</th>
-								<th>Acciones</th>
-							</tr>
-							<tr>
-								<%
-								for (Usuarios usuario : lista) {
-								%>
-								<td><%=usuario.getCedula_usuario()%></td>
-								<td><%=usuario.getNombre_usuario()%></td>
-								<td><%=usuario.getEmail_usuario()%></td>
-								<td><%=usuario.getUsuario()%></td>
-								<td><%=usuario.getPassword()%></td>
-								<td><input type="submit" class="btn btn-primary"
-									name="accion" value="Editar"> <input type="submit"
-									class="btn btn-success" name="accion" value="Eliminar">
+								<td><c:out value="${usuario.cedula_usuario}" /></td>
+								<td><c:out value="${usuario.nombre_usuario}" /></td>
+								<td><c:out value="${usuario.email_usuario}" /></td>
+								<td><c:out value="${usuario.usuario}" /></td>
+								<td><a
+									href="ControladorUsuarios?action=editar&cedula=<c:out value="${usuario.cedula_usuario}"/>">Editar</a>
+									&nbsp;&nbsp;&nbsp;&nbsp; <a
+									href="ControladorUsuarios?action=eliminar&cedula=<c:out value="${usuario.cedula_usuario}"/>"
+									onclick="return confirm('¿Desea eliminar este registro?')">Eliminar</a>
 								</td>
-								<%
-								}
-								%>
 							</tr>
-						</table>
-					</form>
-				</div>
+						</c:forEach>
+					</table>
+				</form>
 			</div>
 		</div>
 	</div>

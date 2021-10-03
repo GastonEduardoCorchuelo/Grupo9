@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Tienda Generica - Página principal</title>
+<title>Página principal - Tienda genérica</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -17,30 +17,30 @@
 		<div class="container-fluid">
 			<ul class="navbar-nav mx-auto">
 				<li class="nav-item"><a style="margin-left: 6px; border: none"
-					class="btn btn-outline-light px-4" href="Controlador?menu=Principal"
+					class="btn btn-outline-light px-4" href="#"
 					target="myFrame">Home</a></li>
 				<li class="nav-item"><a style="margin-left: 10px; border: none"
 					class="btn btn-outline-light px-5"
-					href="Controlador?menu=usuarios&accion=Listar" target="myFrame">Usuarios</a></li>
+					href="usuarios.jsp" target="myFrame">Usuarios</a></li>
 				<li class="nav-item"><a style="margin-left: 10px; border: none"
 					class="btn btn-outline-light px-5"
-					href="Controlador?menu=clientes&accion=Listar" target="myFrame">Clientes</a></li>
+					href="clientes.jsp" target="myFrame">Clientes</a></li>
 				<li class="nav-item"><a style="margin-left: 10px; border: none"
 					class="btn btn-outline-light px-5"
-					href="Controlador?menu=productos&accion=Listar" target="myFrame">Productos</a></li>
+					href="productos.jsp" target="myFrame">Productos</a></li>
 				<li class="nav-item"><a style="margin-left: 10px; border: none"
 					class="btn btn-outline-light px-5"
-					href="Controlador?menu=ventas&accion=Listar" target="myFrame">Ventas</a></li>
+					href="ventas.jsp" target="myFrame">Ventas</a></li>
 				<li class="nav-item"><a style="margin-left: 10px; border: none"
 					class="btn btn-outline-light px-5"
-					href="Controlador?menu=proveedores&accion=Listar" target="myFrame">Proveedores</a>
+					href="proveedores.jsp" target="myFrame">Proveedores</a>
 				</li>
 				<li class="nav-item"><a style="margin-left: 10px; border: none"
 					class="btn btn-outline-light px-5"
-					href="Controlador?menu=reportes&accion=Listar" target="myFrame">Reportes</a></li>
+					href="reportes.jsp" target="myFrame">Reportes</a></li>
 				<li class="nav-item"><a style="margin-left: 10px; border: none"
 					class="btn btn-outline-light px-3"
-					href="Controlador?menu=informacion&accion=Listar" target="myFrame">Acerca de</a></li>
+					href="informacion.jsp" target="myFrame">Acerca de</a></li>
 			</ul>
 		</div>
 		<div class="dropdown">

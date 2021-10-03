@@ -15,7 +15,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class TestJSON {
+public class JSONUsuarios {
 	private static URL url;
 	private static String sitio = "http://localhost:5000/";
 
@@ -104,7 +104,7 @@ public class TestJSON {
 		http.setRequestProperty("Accept", "application/json");
 		http.setRequestProperty("Content-Type", "application/json");
 
-		String data = "{" + "\"cedula_usuario\":\"" + usuario.getCedula_usuario() + "\",\"email_usuario\": \""
+		String data = "{" + "\"cedula_usuario\":\"" + String.valueOf(usuario.getCedula_usuario()) + "\",\"email_usuario\": \""
 				+ usuario.getEmail_usuario() + "\",\"nombre_usuario\": \"" + usuario.getNombre_usuario()
 				+ "\",\"password\":\"" + usuario.getPassword() + "\",\"usuario\":\"" + usuario.getUsuario() + "\"}";
 		byte[] out = data.getBytes(StandardCharsets.UTF_8);

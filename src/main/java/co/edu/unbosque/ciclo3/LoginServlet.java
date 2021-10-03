@@ -4,24 +4,27 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.el.ValueExpression;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/DemoServlet")
-public class DemoServlet extends HttpServlet {
+import org.json.simple.parser.ParseException;
+
+@WebServlet("/LoginServlet")
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public DemoServlet() {
+	public LoginServlet() {
 		super();
 	}
 
 	public void validarUsuarios(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			ArrayList<Usuarios> lista = TestJSON.getJSON();
+			ArrayList<Usuarios> lista = JSONUsuarios.getJSON();
 			request.setAttribute("lista", lista);
 			String email = request.getParameter("email");
 			String pass = request.getParameter("password");
@@ -29,14 +32,17 @@ public class DemoServlet extends HttpServlet {
 			for (Usuarios usuario : lista) {
 				if (usuario.getEmail_usuario().equals(email) && usuario.getPassword().equals(pass)) {
 					request.setAttribute("usuario", usuario);
-					request.getRequestDispatcher("/Principal.jsp").forward(request, response);
+					RequestDispatcher dispatcher = request.getRequestDispatcher("Principal.jsp");
+					dispatcher.forward(request, response);
 					respuesta = 1;
 				}
 			}
 
 			if (respuesta == 0) {
-				request.getRequestDispatcher("/Inicio.jsp").forward(request, response);
-				System.out.println("El usuario no se encuentra registrado.");
+				String message = "Usuario o contraseña incorrectos.";
+				request.setAttribute("message", message);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("Inicio.jsp");
+				dispatcher.forward(request, response);
 			}
 
 		} catch (Exception e) {
