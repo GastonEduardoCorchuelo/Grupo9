@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="co.edu.unbosque.ciclo3.Usuarios"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Creacion de Usuario - Tienda genérica</title>
+<meta charset="UTF-8">
+<title>Creacion de Usuario - Tienda genÃ©rica</title>
 </head>
 <body>
 	<h2>Usuarios</h2>
@@ -21,12 +21,13 @@
 							href="ControladorUsuarios?action=listar">Listar usuarios</a>
 					</h2>
 					<p>${message}</p>
+					<b>Ã±</b>
 					<table class="table" border="1">
 						<caption>Listado de usuarios</caption>
 						<tr>
-							<th>Cédula</th>
+							<th>CÃ©dula</th>
 							<th>Nombre</th>
-							<th>Correo Electrónico</th>
+							<th>Correo ElectrÃ³nico</th>
 							<th>Usuario</th>
 							<th>Acciones</th>
 						</tr>
@@ -40,7 +41,7 @@
 									href="ControladorUsuarios?action=editar&cedula=<c:out value="${usuario.cedula_usuario}"/>">Editar</a>
 									&nbsp;&nbsp;&nbsp;&nbsp; <a
 									href="ControladorUsuarios?action=eliminar&cedula=<c:out value="${usuario.cedula_usuario}"/>"
-									onclick="return confirm('¿Desea eliminar este registro?')">Eliminar</a>
+									onclick="return confirm('Â¿Desea eliminar este registro?')">Eliminar</a>
 								</td>
 							</tr>
 						</c:forEach>

@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="co.edu.unbosque.ciclo3.Usuarios"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Formulario de usuario - Tienda genérica</title>
+<meta charset="UTF-8">
+<title>Formulario de usuario - Tienda genÃ©rica</title>
 </head>
 <body>
 	<div>
@@ -16,20 +16,20 @@
 				<caption>Listado de usuarios</caption>
 				<c:if test="${usuario == null}">
 					<tr>
-						<th>Cédula:</th>
+						<th>CÃ©dula:</th>
 						<td><input type="text" name="cedula" maxlength="10" size="45"
 							value="<c:out value="${usuario.cedula_usuario}"/>" required /></td>
 					</tr>
 				</c:if>
 				<c:if test="${usuario != null}">
 					<tr>
-						<th>Cédula(No editable):</th>
+						<th>CÃ©dula(No editable):</th>
 						<td><input type="text" name="cedula" maxlength="10" size="45"
 							value="<c:out value="${usuario.cedula_usuario}"/>" readonly /></td>
 					</tr>
 				</c:if>
 				<tr>
-					<th>Correo electrónico:</th>
+					<th>Correo electrÃ³nico:</th>
 					<td><input type="text" name="email" size="45"
 						value="<c:out value="${usuario.email_usuario}"/>" required /></td>
 				</tr>
@@ -44,8 +44,8 @@
 						value="<c:out value="${usuario.usuario}"/>" required /></td>
 				</tr>
 				<tr>
-					<th>Contraseña:</th>
-					<td><input type="text" name="password" size="45"
+					<th>ContraseÃ±a:</th>
+					<td><input type="password" name="password" size="45"
 						value="<c:out value="${usuario.password}"/>" required /></td>
 				</tr>
 			</table>

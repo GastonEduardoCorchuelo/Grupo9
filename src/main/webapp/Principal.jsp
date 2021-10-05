@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Página principal - Tienda genérica</title>
+<meta charset="UTF-8">
+<title>PÃ¡gina principal - Tienda genÃ©rica</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -12,7 +12,7 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<h1>Bienvenido a Tienda Genérica</h1>
+	<h1>Bienvenido a Tienda GenÃ©rica</h1>
 	<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
 		<div class="container-fluid">
 			<ul class="navbar-nav mx-auto">
