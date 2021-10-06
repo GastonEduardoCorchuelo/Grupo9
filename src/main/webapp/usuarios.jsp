@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page import="co.edu.unbosque.ciclo3.Usuarios"%>
+<%@page import="co.edu.unbosque.ciclo3front.modelo.Usuarios"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Creacion de Usuario - Tienda genérica</title>
+<title>Lista de usuarios - Tienda genérica</title>
 </head>
 <body>
 	<h2>Usuarios</h2>
@@ -21,7 +21,6 @@
 							href="ControladorUsuarios?action=listar">Listar usuarios</a>
 					</h2>
 					<p>${message}</p>
-					<b>ñ</b>
 					<table class="table" border="1">
 						<caption>Listado de usuarios</caption>
 						<tr>

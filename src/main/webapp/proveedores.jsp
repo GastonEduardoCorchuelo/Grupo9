@@ -1,36 +1,55 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page import="co.edu.unbosque.ciclo3front.modelo.Proveedores"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Tienda Generica</title>
+<meta charset="UTF-8">
+<title>Lista de proveedores - Tienda genÃ©rica</title>
 </head>
 <body>
-	<main class="container container-form-users">
-		<h2>Proveedores</h2>
-		<form class="users-form">
-			<div class="field">
-				<label>NIT</label> <input type="text" placeholder="Ingrese el NIT">
-				<label> Teléfono </label> <input type="text"
-					placeholder="Ingrese el teléfono">
+	<h2>Proveedores</h2>
+	<div class="row">
+		<div class="card col-md-4">
+			<div class="card-body">
+				<form method="post" action="ControladorProveedores">
+					<h2>
+						<a href="ControladorProveedores?action=nuevo">Agregar nuevo
+							proveedor</a> &nbsp;&nbsp;&nbsp; <a
+							href="ControladorProveedores?action=listar">Listar proveedores</a>
+					</h2>
+					<p>${message}</p>
+					<table class="table" border="1">
+						<caption>Listado de proveedores</caption>
+						<tr>
+							<th>NIT</th>
+							<th>Nombre</th>
+							<th>Ciudad</th>
+							<th>DirecciÃ³n</th>
+							<th>TelÃ©fono</th>
+							<th>Acciones</th>
+						</tr>
+						<c:forEach var="proveedor" items="${proveedor}">
+							<tr>
+								<td><c:out value="${proveedor.nit_proveedor}" /></td>
+								<td><c:out value="${proveedor.nombre_proveedor}" /></td>
+								<td><c:out value="${proveedor.ciudad_proveedor}" /></td>
+								<td><c:out value="${proveedor.direccion_proveedor}" /></td>
+								<td><c:out value="${proveedor.telefono_proveedor}" /></td>
+								<td><a
+									href="ControladorProveedores?action=editar&nit=<c:out value="${proveedor.nit_proveedor}"/>">Editar</a>
+									&nbsp;&nbsp;&nbsp;&nbsp; <a
+									href="ControladorProveedores?action=eliminar&nit=<c:out value="${proveedor.nit_proveedor}"/>"
+									onclick="return confirm('Â¿Desea eliminar este registro?')">Eliminar</a>
+								</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</form>
 			</div>
-			<div class="field">
-				<label>Nombre Proveedor</label> <input type="text"
-					placeholder="Ingrese proveedor"> <label> Ciudad </label> <input
-					type="text" placeholder="Ingrese la ciudad">
-			</div>
-			<div class="field1">
-				<label>Dirección</label> <input type="email"
-					placeholder="Ingrese la dirección">
-			</div>
-			<div class="buttons">
-				<button class="btn btn-rojo">Consultar</button>
-				<button class="btn btn-rojo">Crear</button>
-				<button class="btn btn-rojo">Actualizar</button>
-				<button class="btn btn-rojo">Borrar</button>
-			</div>
-		</form>
-	</main>
+		</div>
+	</div>
 </body>
 </html>

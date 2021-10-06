@@ -1,4 +1,4 @@
-package co.edu.unbosque.ciclo3;
+package co.edu.unbosque.ciclo3front.controlador;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.parser.ParseException;
+
+import co.edu.unbosque.ciclo3front.json.JSONUsuarios;
+import co.edu.unbosque.ciclo3front.modelo.Usuarios;
 
 /**
  * Servlet implementation class ControladorUsuarios
@@ -141,5 +144,4 @@ public class ControladorUsuarios extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

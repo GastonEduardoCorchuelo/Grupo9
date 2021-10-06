@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page import="co.edu.unbosque.ciclo3.Usuarios"%>
+<%@page import="co.edu.unbosque.ciclo3front.modelo.Usuarios"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Formulario de usuario - Tienda genérica</title>
+<title>Formulario de usuarios - Tienda genérica</title>
 </head>
 <body>
 	<div>

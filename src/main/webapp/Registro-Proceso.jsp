@@ -17,7 +17,7 @@ try {
 	"insert into usuarios(cedula_usuario,nombre_usuario,email_usuario,usuario,password)values("
 			+ cedula + ",'" + nombres + "','" + email + "','" + usuario + "','" + password
 			+ "')");
-	out.println("Gracias por registrarte!</br><a href='index.jsp'>Inicia sesión</a> para continuar.");
+	out.println("Gracias por registrarte!</br><a href='Inicio.jsp'>Inicia sesión</a> para continuar.");
 
 } catch (java.sql.SQLIntegrityConstraintViolationException e) {
 	out.println("El usuario ya se encuentra registrado.");

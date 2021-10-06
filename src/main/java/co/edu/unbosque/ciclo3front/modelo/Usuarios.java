@@ -1,4 +1,4 @@
-package co.edu.unbosque.ciclo3;
+package co.edu.unbosque.ciclo3front.modelo;
 
 public class Usuarios {
 	private Long cedula_usuario;

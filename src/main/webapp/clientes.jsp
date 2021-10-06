@@ -1,55 +1,55 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page import="co.edu.unbosque.ciclo3front.modelo.Usuarios"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Tienda Generica</title>
+<meta charset="UTF-8">
+<title>Lista de clientes - Tienda genérica</title>
 </head>
 <body>
 	<h2>Clientes</h2>
-	<main class="contenedor contenedor-form-cliente">
-		<form>
-			<div class="double-campo">
-				<div class="campo">
-					<label for="cedula"> &iinfin; Cedula:</label> <input type="number"
-						name="cedula" id="cedula" placeholder="tu cedula"
-						title="campo de la cedula*" required>
-				</div>
-				<div class="campo">
-					<label for="nombreCompleto"> &iinfin; Nombre Completo:</label> <input
-						type="text" name="nombreCompleto" id="nombreCompleto"
-						placeholder="tu nombre completo" title="campo del nombre*"
-						required>
-				</div>
+	<div class="row">
+		<div class="card col-md-4">
+			<div class="card-body">
+				<form method="post" action="ControladorClientes">
+					<h2>
+						<a href="ControladorClientes?action=nuevo">Agregar nuevo
+							cliente</a> &nbsp;&nbsp;&nbsp; <a
+							href="ControladorClientes?action=listar">Listar clientes</a>
+					</h2>
+					<p>${message}</p>
+					<table class="table" border="1">
+						<caption>Listado de clientes</caption>
+						<tr>
+							<th>Cédula</th>
+							<th>Dirección</th>
+							<th>Correo Electrónico</th>
+							<th>Nombre</th>
+							<th>Teléfono</th>
+							<th>Acciones</th>
+						</tr>
+						<c:forEach var="cliente" items="${cliente}">
+							<tr>
+								<td><c:out value="${cliente.cedula_cliente}" /></td>
+								<td><c:out value="${cliente.direccion_cliente}" /></td>
+								<td><c:out value="${cliente.email_cliente}" /></td>
+								<td><c:out value="${cliente.nombre_cliente}" /></td>
+								<td><c:out value="${cliente.telefono_cliente}" /></td>
+								<td><a
+									href="ControladorClientes?action=editar&cedula=<c:out value="${cliente.cedula_cliente}"/>">Editar</a>
+									&nbsp;&nbsp;&nbsp;&nbsp; <a
+									href="ControladorClientes?action=eliminar&cedula=<c:out value="${cliente.cedula_cliente}"/>"
+									onclick="return confirm('¿Desea eliminar este registro?')">Eliminar</a>
+								</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</form>
 			</div>
-			<div class="double-campo">
-				<div class="campo">
-					<label for="direccion"> &iinfin; Direcci�n:</label> <input
-						type="text" name="direccion" id="direccion"
-						placeholder="tu direcci�n" title="campo de la direccion*" required>
-				</div>
-				<div class="campo">
-					<label for="telefono"> &iinfin; Telefono:</label> <input
-						type="number" name="telefono" id="telefono"
-						placeholder="tu telefono" title="campo del telefono*" required>
-				</div>
-			</div>
-			<div class="double-campo">
-				<div class="campo">
-					<label for="correoElectronico"> &iinfin; Correo
-						Electronico:</label> <input type="email" name="correoElectronico"
-						id="correoElectronico" placeholder="tu correo electronico"
-						title="campo del correo*" required>
-				</div>
-			</div>
-			<div class="botones">
-				<button class="btn">Consultar</button>
-				<button class="btn">Crear</button>
-				<button class="btn">Actualizar</button>
-				<button class="btn">Borrar</button>
-			</div>
-		</form>
-	</main>
+		</div>
+	</div>
 </body>
 </html>

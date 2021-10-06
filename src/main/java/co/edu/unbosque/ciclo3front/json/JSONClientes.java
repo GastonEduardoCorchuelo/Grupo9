@@ -1,4 +1,4 @@
-package co.edu.unbosque.ciclo3;
+package co.edu.unbosque.ciclo3front.json;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,31 +15,33 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class JSONUsuarios {
+import co.edu.unbosque.ciclo3front.modelo.Clientes;
+
+public class JSONClientes {
 	private static URL url;
 	private static String sitio = "http://localhost:5000/";
 
-	public static ArrayList<Usuarios> parsingUsuarios(String json) throws ParseException {
+	public static ArrayList<Clientes> parsingClientes(String json) throws ParseException {
 		JSONParser jsonParser = new JSONParser();
-		ArrayList<Usuarios> lista = new ArrayList<Usuarios>();
-		JSONArray usuarios = (JSONArray) jsonParser.parse(json);
-		Iterator i = usuarios.iterator();
+		ArrayList<Clientes> lista = new ArrayList<Clientes>();
+		JSONArray clientes = (JSONArray) jsonParser.parse(json);
+		Iterator i = clientes.iterator();
 		while (i.hasNext()) {
 			JSONObject innerObj = (JSONObject) i.next();
-			Usuarios usuario = new Usuarios();
-			usuario.setCedula_usuario(Long.parseLong(innerObj.get("cedula_usuario").toString()));
-			usuario.setEmail_usuario(innerObj.get("email_usuario").toString());
-			usuario.setNombre_usuario(innerObj.get("nombre_usuario").toString());
-			usuario.setPassword(innerObj.get("password").toString());
-			usuario.setUsuario(innerObj.get("usuario").toString());
-			lista.add(usuario);
+			Clientes cliente = new Clientes();
+			cliente.setCedula_cliente(Long.parseLong(innerObj.get("cedula_cliente").toString()));
+			cliente.setDireccion_cliente(innerObj.get("direccion_cliente").toString());
+			cliente.setEmail_cliente(innerObj.get("email_cliente").toString());
+			cliente.setNombre_cliente(innerObj.get("nombre_cliente").toString());
+			cliente.setTelefono_cliente(innerObj.get("telefono_cliente").toString());
+			lista.add(cliente);
 		}
 		return lista;
 	}
 
-	public static ArrayList<Usuarios> getJSON() throws IOException, ParseException {
+	public static ArrayList<Clientes> getJSON() throws IOException, ParseException {
 
-		url = new URL(sitio + "usuarios/listar");
+		url = new URL(sitio + "clientes/listar");
 		HttpURLConnection http = (HttpURLConnection) url.openConnection();
 
 		http.setRequestMethod("GET");
@@ -53,15 +55,15 @@ public class JSONUsuarios {
 			json += (char) inp[i];
 		}
 
-		ArrayList<Usuarios> lista = new ArrayList<Usuarios>();
-		lista = parsingUsuarios(json);
+		ArrayList<Clientes> lista = new ArrayList<Clientes>();
+		lista = parsingClientes(json);
 		http.disconnect();
 		return lista;
 	}
 
-	public static int postJSON(Usuarios usuario) throws IOException {
+	public static int postJSON(Clientes cliente) throws IOException {
 
-		url = new URL(sitio + "usuarios/guardar");
+		url = new URL(sitio + "clientes/guardar");
 		HttpURLConnection http;
 		http = (HttpURLConnection) url.openConnection();
 
@@ -75,10 +77,10 @@ public class JSONUsuarios {
 		http.setRequestProperty("Accept", "application/json");
 		http.setRequestProperty("Content-Type", "application/json");
 
-		String data = "{" + "\"cedula_usuario\":\"" + String.valueOf(usuario.getCedula_usuario())
-				+ "\",\"email_usuario\": \"" + usuario.getEmail_usuario() + "\",\"nombre_usuario\": \""
-				+ usuario.getNombre_usuario() + "\",\"password\":\"" + usuario.getPassword() + "\",\"usuario\":\""
-				+ usuario.getUsuario() + "\"}";
+		String data = "{" + "\"cedula_cliente\":\"" + String.valueOf(cliente.getCedula_cliente())
+				+ "\",\"direccion_cliente\": \"" + cliente.getDireccion_cliente() + "\",\"email_cliente\": \""
+				+ cliente.getEmail_cliente() + "\",\"nombre_cliente\":\"" + cliente.getNombre_cliente()
+				+ "\",\"telefono_cliente\":\"" + cliente.getTelefono_cliente() + "\"}";
 		byte[] out = data.getBytes(StandardCharsets.UTF_8);
 		OutputStream stream = http.getOutputStream();
 		stream.write(out);
@@ -88,9 +90,9 @@ public class JSONUsuarios {
 		return respuesta;
 	}
 
-	public static int putJSON(Usuarios usuario, Long cedula_usuario) throws IOException {
+	public static int putJSON(Clientes cliente, Long cedula_cliente) throws IOException {
 
-		url = new URL(sitio + "usuarios/actualizar");
+		url = new URL(sitio + "clientes/actualizar");
 		HttpURLConnection http;
 		http = (HttpURLConnection) url.openConnection();
 
@@ -104,9 +106,10 @@ public class JSONUsuarios {
 		http.setRequestProperty("Accept", "application/json");
 		http.setRequestProperty("Content-Type", "application/json");
 
-		String data = "{" + "\"cedula_usuario\":\"" + String.valueOf(usuario.getCedula_usuario()) + "\",\"email_usuario\": \""
-				+ usuario.getEmail_usuario() + "\",\"nombre_usuario\": \"" + usuario.getNombre_usuario()
-				+ "\",\"password\":\"" + usuario.getPassword() + "\",\"usuario\":\"" + usuario.getUsuario() + "\"}";
+		String data = "{" + "\"cedula_cliente\":\"" + String.valueOf(cliente.getCedula_cliente())
+				+ "\",\"direccion_cliente\": \"" + cliente.getDireccion_cliente() + "\",\"email_cliente\": \""
+				+ cliente.getEmail_cliente() + "\",\"nombre_cliente\":\"" + cliente.getNombre_cliente()
+				+ "\",\"telefono_cliente\":\"" + cliente.getTelefono_cliente() + "\"}";
 		byte[] out = data.getBytes(StandardCharsets.UTF_8);
 		OutputStream stream = http.getOutputStream();
 		stream.write(out);
@@ -116,9 +119,9 @@ public class JSONUsuarios {
 		return respuesta;
 	}
 
-	public static int deleteJSON(Long cedula_usuario) throws IOException {
+	public static int deleteJSON(Long cedula_cliente) throws IOException {
 
-		url = new URL(sitio + "usuarios/eliminar/" + cedula_usuario);
+		url = new URL(sitio + "clientes/eliminar/" + cedula_cliente);
 		HttpURLConnection http;
 		http = (HttpURLConnection) url.openConnection();
 
@@ -136,4 +139,5 @@ public class JSONUsuarios {
 		http.disconnect();
 		return respuesta;
 	}
+
 }

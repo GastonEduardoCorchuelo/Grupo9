@@ -17,8 +17,7 @@
 		<div class="container-fluid">
 			<ul class="navbar-nav mx-auto">
 				<li class="nav-item"><a style="margin-left: 6px; border: none"
-					class="btn btn-outline-light px-4" href="#"
-					target="myFrame">Home</a></li>
+					class="btn btn-outline-light px-4" href="Principal.jsp">Home</a></li>
 				<li class="nav-item"><a style="margin-left: 10px; border: none"
 					class="btn btn-outline-light px-5"
 					href="usuarios.jsp" target="myFrame">Usuarios</a></li>
