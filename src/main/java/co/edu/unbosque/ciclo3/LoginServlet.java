@@ -46,18 +46,19 @@ public class LoginServlet extends HttpServlet {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new ServletException("Inicio de sesión fallido", e);
 		}
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String accion = request.getParameter("login");
-		if (accion.equals("Iniciar Sesión")) {
+		String accion = request.getParameter("accion");
+		if (accion.equals("login")) {
 			this.validarUsuarios(request, response);
 		}
 	}

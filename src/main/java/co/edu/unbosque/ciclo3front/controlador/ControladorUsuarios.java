@@ -97,18 +97,37 @@ public class ControladorUsuarios extends HttpServlet {
 	}
 
 	private void agregarUsuario(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException, ServletException {
-		Usuarios usuario = new Usuarios();
-		usuario.setCedula_usuario(Long.parseLong(request.getParameter("cedula")));
-		usuario.setEmail_usuario(request.getParameter("email"));
-		usuario.setNombre_usuario(request.getParameter("nombre"));
-		usuario.setUsuario(request.getParameter("user"));
-		usuario.setPassword(request.getParameter("password"));
-		JSONUsuarios.postJSON(usuario);
-		String message = "Usuario agregado exitosamente";
-		request.setAttribute("message", message);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("usuarios.jsp");
-		dispatcher.forward(request, response);
+			throws SQLException, IOException, ServletException, ParseException {
+		ArrayList<Usuarios> lista = JSONUsuarios.getJSON();
+		Long cedula = Long.parseLong(request.getParameter("cedula"));
+		String email = request.getParameter("email");
+		String user = request.getParameter("user");
+		boolean encontrado = false;
+		for (Usuarios usuario : lista) {
+			if (usuario.getCedula_usuario().equals(cedula) || usuario.getEmail_usuario().equals(email)
+					|| usuario.getNombre_usuario().equals(user)) {
+				encontrado = true;
+				break;
+			}
+		}
+		if (encontrado) {
+			String message = "El usuario ya se encuentra registrado";
+			request.setAttribute("message", message);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("usuarios.jsp");
+			dispatcher.forward(request, response);
+		} else {
+			Usuarios usuario = new Usuarios();
+			usuario.setCedula_usuario(Long.parseLong(request.getParameter("cedula")));
+			usuario.setEmail_usuario(request.getParameter("email"));
+			usuario.setNombre_usuario(request.getParameter("nombre"));
+			usuario.setUsuario(request.getParameter("user"));
+			usuario.setPassword(request.getParameter("password"));
+			JSONUsuarios.postJSON(usuario);
+			String message = "Usuario agregado exitosamente";
+			request.setAttribute("message", message);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("usuarios.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 	private void actualizarUsuario(HttpServletRequest request, HttpServletResponse response)

@@ -27,7 +27,7 @@
 					type="password" placeholder="Contraseña" required>
 			</div>
 
-			<input type="submit" value="Iniciar Sesión" class="button" name="login">
+			<button type="submit" value="login" name="accion">Iniciar Sesión</button>
 			<p>
 				¿No tienes una cuenta? <a class="link" href="Registro.jsp">Regístrate
 				</a>
