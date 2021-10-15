@@ -8,55 +8,72 @@
 <head>
 <meta charset="UTF-8">
 <title>Formulario de productos - Tienda Equipo 9</title>
+<link rel="stylesheet" type="text/css" href="./style2.css">
 </head>
 <body>
-	<div>
-		<form action="ControladorProductos" method="post">
-				<h3>Listado de productos</h3>
+	<br>
+	<br>
+	 <main  class="container container-form-users">
+		<form class="users-form" action="ControladorProductos" method="post">
+				<h2>Productos</h2>
+				
+					<div class="field">
+					<label>Nombre del producto:</label>
+					<input type="text" placeholder="Nombre de producto" name="nombre" 
+						value="<c:out value="${producto.nombre_producto}"/>" required />
+						
+					<label>Precio de compra:</label>
+					<input type="number" placeholder="precio compra" name="preciocompra" 
+						value="<c:out value="${producto.precio_compra}"/>" required />
+					</div>
+					<div class="field">	
+					<label>Precio de venta:</label>
+					<input type="number" placeholder="precio venta" name="precioventa" 
+						value="<c:out value="${producto.precio_venta}"/>" required />
+					
+						
+					<label>IVA:</label>
+					<input type="number" placeholder="IVA" name="iva" 
+						value="<c:out value="${producto.iva_compra}"/>" required />
+					
+					</div>	
+					<div class="field1">
+					<label>NIT del proveedor:</label>
+					<input type="number" placeholder="NIT proveedor" name="nit" 
+						value="<c:out value="${producto.nit_proveedor}"/>" required />
+				</div>
 				
 				<c:if test="${producto == null}">
-						<p>Código del producto:</p>
-						<input type="number" name="codigo" maxlength="10" size="45"
+				<div class="field1">
+						<label>Código del producto:</label>
+						<input type="number" placeholder="Ingrese su codigo" name="codigo" 
 							value="<c:out value="${producto.codigo_producto}"/>" required />
+				</div>
 				</c:if>
 				
 				<c:if test="${producto != null}">
-						<p>Código del producto(No editable):</p>
-						<input type="number" name="codigo" maxlength="10" size="45"
+					<div class="field1">
+						<label>Código del producto(No editable):</label>
+						<input type="number" placeholder="Ingrese su codigo"  name="codigo" 
 							value="<c:out value="${producto.codigo_producto}"/>" readonly />
+				</div>
 				</c:if>
-				
-					<p>Nombre del producto:</p>
-					<input type="text" name="nombre" size="45"
-						value="<c:out value="${producto.nombre_producto}"/>" required />
-						
-					<p>Precio de compra:</p>
-					<input type="number" name="preciocompra" size="45"
-						value="<c:out value="${producto.precio_compra}"/>" required />
-						
-					<p>Precio de venta:</p>
-					<input type="number" name="precioventa" size="45"
-						value="<c:out value="${producto.precio_venta}"/>" required />
-						
-					<p>IVA:</p>
-					<input type="number" name="iva" size="45"
-						value="<c:out value="${producto.iva_compra}"/>" required />
-						
-					<p>NIT del proveedor:</p>
-					<input type="number" name="nit" size="45"
-						value="<c:out value="${producto.nit_proveedor}"/>" required />
 						
 			<c:if test="${producto == null}">
-				<button type="submit" name="action" value="agregar">Agregar
+				<div class="botones">
+				<button class="bton"   type="submit"  name="action" value="agregar">Agregar
 					producto</button>
+			</div>
 			</c:if>
 			
 			<c:if test="${producto != null}">
-				<button type="submit" name="action" value="actualizar">Actualizar
+				<div class="botones">
+				<button class="bton" type="submit" name="action" value="actualizar">Actualizar
 					producto</button>
+				</div>	
 			</c:if>
 			
 		</form>
-	</div>
+	</main>
 </body>
 </html>

@@ -2,7 +2,7 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
-   background: url(imagen.jpg);
+    background: url(./fondoindex.jpg);
     background-size: cover;
     background-attachment: fixed;
 }
@@ -25,8 +25,8 @@ h1{
 }
 input[type="text"],
 input[type="password"],
-input[type="number"],
-input[type="email"]{
+input[type="email"],
+input[type="number"]{
     font-size: 20px;
     width: 82%;
     padding: 10px;
@@ -41,7 +41,7 @@ input[type="email"]{
     text-align: center;
     color: #999;
 }
-button .submit{
+.button{
     border: none;
     width: 100%;
     color: white;

@@ -7,14 +7,15 @@
 <title>Iniciar Sesión - Tienda Equipo 9</title>
 <meta name="viewport"
 	content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" />
-<link rel="stylesheet" type="text/css" href="./css/style.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" />
+<link rel="stylesheet" type="text/css" href="./style.css" />
 </head>
 <body>
 	<form class="formulario" method="post" action="LoginServlet">
 
-		<h1>Inicio de Sesión</h1>
+		<h1>Inicio de Sesión<br>	
+			Tienda Generica
+		</h1>
 		
 		<p>${message}</p>
 		
@@ -31,7 +32,7 @@
 					type="password" placeholder="Contraseña" required>
 			</div>
 
-			<button type="submit" value="login" name="accion">Iniciar Sesión</button>
+			<button class="button" type="submit" value="login" name="accion">Iniciar Sesión</button>
 			<p>¿No tienes una cuenta? <a class="link" href="Registro.jsp">Regístrate</a></p>
 			
 		</div>

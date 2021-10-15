@@ -8,51 +8,66 @@
 <head>
 <meta charset="UTF-8">
 <title>Formulario de clientes - Tienda Equipo 9</title>
+<link rel="stylesheet" type="text/css" href="./style2.css">
 </head>
 <body>
-	<div>
-		<form action="ControladorClientes" method="post">
-				<h3>Listado de clientes</h3>
+	<br>
+    <br>
+
+    <main class="container container-form-users">
+		<form class="users-form" action="ControladorClientes" method="post">
+				 <h2>Clientes</h2>
 								
-				<c:if test="${cliente == null}">
-						<p>Cédula:</p>
-						<input type="number" name="cedula" maxlength="10" size="45"
+				
+					 <div class="field">
+					<label>Dirección:</label>
+					<input type="text" name="direccion" 
+						value="<c:out value="${cliente.direccion_cliente}"/>" required />
+						
+					<label>Correo electrónico:</label>
+					<input type="email" placeholder="Ingrese su direccion" placeholder="Ingrese Su Correo"  name="email" 
+						value="<c:out value="${cliente.email_cliente}"/>" required />
+					</div>
+					 <div class="field">	
+					<label>Nombre:</label>
+					<input type="text" placeholder="Ingrese su nombre completo" name="nombre"
+						value="<c:out value="${cliente.nombre_cliente}"/>" required />
+						
+					<label>Teléfono:</label>
+					<input type="text" placeholder="Ingrese su numero de telefono" name="telefono" 
+						value="<c:out value="${cliente.telefono_cliente}"/>" required />
+					</div>
+					<c:if test="${cliente == null}">
+				<div class="field1">
+						<label>Cédula:</label>
+						<input type="number" placeholder="Ingrese su cédula" name="cedula" 
 							value="<c:out value="${cliente.cedula_cliente}"/>" required />
+				</div>
 				</c:if>
 				
 				<c:if test="${cliente != null}">
-						<p>Cédula(No editable):</p>
-						<input type="number" name="cedula" maxlength="10" size="45"
+				<div class="field1">
+						<label>Cédula(No editable):</label>
+						<input type="number" placeholder="Ingrese su cédula" name="cedula" maxlength="10" size="45"
 							value="<c:out value="${cliente.cedula_cliente}"/>" readonly />
+				</div>
 				</c:if>
-				
-					<p>Dirección:</p>
-					<input type="text" name="direccion" size="45"
-						value="<c:out value="${cliente.direccion_cliente}"/>" required />
-						
-					<p>Correo electrónico:</p>
-					<input type="email" name="email" size="45"
-						value="<c:out value="${cliente.email_cliente}"/>" required />
-						
-					<p>Nombres:</p>
-					<input type="text" name="nombre" size="45"
-						value="<c:out value="${cliente.nombre_cliente}"/>" required />
-						
-					<p>Teléfono:</p>
-					<input type="text" name="telefono" size="45"
-						value="<c:out value="${cliente.telefono_cliente}"/>" required />
-						
 			<c:if test="${cliente == null}">
-				<button type="submit" name="action" value="agregar">Agregar
+				 <div class="botones">
+				<button class="bton" type="submit" name="action" value="agregar">Agregar
 					cliente</button>
+				</div> 		
 			</c:if>
 			
 			<c:if test="${cliente != null}">
-				<button type="submit" name="action" value="actualizar">Actualizar
+				 <div class="botones">
+				<button class="bton" type="submit" name="action" value="actualizar">Actualizar
 					cliente</button>
+				</div>
 			</c:if>
 			
 		</form>
+		</main>
 	</div>
 </body>
 </html>

@@ -8,51 +8,69 @@
 <head>
 <meta charset="UTF-8">
 <title>Formulario de usuarios - Tienda Equipo 9</title>
+<link rel="stylesheet" type="text/css" href="./style2.css">
 </head>
 <body>
-	<div>
-		<form action="ControladorUsuarios" method="post">
-				<h3>Listado de usuarios</h3>
+	 <br>
+     <br>
+     
+	<main class="container container-form-users">
+		<form class="users-form"  action="ControladorUsuarios" method="post">
+				<h2>Usuarios</h2>
 				
-				<c:if test="${usuario == null}">
-						<p>Cédula:</p>
-						<input type="number" name="cedula" maxlength="10" size="45"
+				
+				
+					
+					<div class="field">
+					<label>Correo electrónico:</label>
+					<input type="email" placeholder="Ingrese Su Correo"
+						value="<c:out value="${usuario.email_usuario}"/>" required />
+						
+					<label>Nombre:</label>
+					<input type="text" placeholder="Ingrese su nombre completo" name="nombre" 
+						value="<c:out value="${usuario.nombre_usuario}"/>" required />
+					</div>
+					<div class="field">
+					<label>usuario:</label>
+					<input type="text" placeholder="Ingrese su usuario" name="user" 
+						value="<c:out value="${usuario.usuario}"/>" required />
+						
+					<label>Contraseña:</label>
+					<input type="password" placeholder="Ingrese su contraseña" name="password" 
+						value="<c:out value="${usuario.password}"/>" required />
+					</div>
+					
+					<c:if test="${usuario == null}">
+				<div class="field1">
+						<label>Cédula:</label>
+						<input type="number" placeholder="Ingrese su cédula" name="cedula" 
 							value="<c:out value="${usuario.cedula_usuario}"/>" required />
+				</div>
 				</c:if>
 				
 				<c:if test="${usuario != null}">
-						<p>Cédula(No editable):</p>
-						<input type="number" name="cedula" maxlength="10" size="45"
+				<div class="field1">
+						<label>Cédula(No editable):</label>
+						<input type="number" name="cedula" 
 							value="<c:out value="${usuario.cedula_usuario}"/>" readonly />
+				</div>				
 				</c:if>
-				
-					<p>Correo electrónico:</p>
-					<input type="email" name="email" size="45"
-						value="<c:out value="${usuario.email_usuario}"/>" required />
-						
-					<p>Nombre:</p>
-					<input type="text" name="nombre" size="45"
-						value="<c:out value="${usuario.nombre_usuario}"/>" required />
-						
-					<p>Nombre de usuario:</p>
-					<input type="text" name="user" size="45"
-						value="<c:out value="${usuario.usuario}"/>" required />
-						
-					<p>Contraseña:</p>
-					<input type="password" name="password" size="45"
-						value="<c:out value="${usuario.password}"/>" required />
-						
 			<c:if test="${usuario == null}">
-				<button type="submit" name="action" value="agregar">Agregar
+			<div class="botones">
+				<button class="bton" type="submit" name="action" value="agregar">Agregar
 					usuario</button>
+			</div>		
 			</c:if>
 			
 			<c:if test="${usuario != null}">
-				<button type="submit" name="action" value="actualizar">Actualizar
+			<div class="botones">
+				<button class="bton" type="submit" name="action" value="actualizar">Actualizar
 					usuario</button>
+			</div>
 			</c:if>
-			
+		
 		</form>
-	</div>
+		</main>
+	
 </body>
 </html>

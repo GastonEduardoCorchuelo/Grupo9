@@ -8,27 +8,28 @@
 <head>
 <meta charset="UTF-8">
 <title>Proveedores - Tienda Equipo 9</title>
+<link rel="stylesheet" type="text/css" href="./style2.css">
 </head>
 <body>
 
-	<h2>Proveedores</h2>
-	
-	<div class="row">
-		<div class="card col-md-4">
-			<div class="card-body">
-				<form method="post" action="ControladorProveedores">
-				
-					<h2>
-						<a href="ControladorProveedores?action=nuevo">Agregar nuevo
-							proveedor</a> &nbsp;&nbsp;&nbsp; <a
-							href="ControladorProveedores?action=listar">Listar proveedores</a>
-					</h2>
-					
-					<p>${message}</p>
-					
-					<c:if test="${proveedor != null}">
-					<table class="table" border="1">
-					
+	<br>
+	<br>
+	<main class="container container-form-users">
+		<form class="users-form" method="post" action="ControladorProveedores">
+			<h2>proveedores</h2>
+			<div class="botones">
+				<ul>
+					<a class="btn" href="ControladorProveedores?action=nuevo">Agregar
+						nuevo proveedor</a> &nbsp;&nbsp;&nbsp;
+					<a class="btn" href="ControladorProveedores?action=listar">Listar
+						proveedores</a>
+				</ul>
+
+				<p>${message}</p>
+
+				<c:if test="${proveedor != null}">
+					<table">
+
 						<caption>Listado de proveedores</caption>
 						<tr>
 							<th>NIT</th>
@@ -38,7 +39,7 @@
 							<th>Teléfono</th>
 							<th>Acciones</th>
 						</tr>
-						
+
 						<c:forEach var="proveedor" items="${proveedor}">
 							<tr>
 								<td><c:out value="${proveedor.nit_proveedor}" /></td>
@@ -46,19 +47,19 @@
 								<td><c:out value="${proveedor.ciudad_proveedor}" /></td>
 								<td><c:out value="${proveedor.direccion_proveedor}" /></td>
 								<td><c:out value="${proveedor.telefono_proveedor}" /></td>
-								<td><a href="ControladorProveedores?action=editar&nit=<c:out value="${proveedor.nit_proveedor}"/>">Editar</a>
+								<td><a
+									href="ControladorProveedores?action=editar&nit=<c:out value="${proveedor.nit_proveedor}"/>">Editar</a>
 									&nbsp;&nbsp;&nbsp;&nbsp; <a
 									href="ControladorProveedores?action=eliminar&nit=<c:out value="${proveedor.nit_proveedor}"/>"
 									onclick="return confirm('¿Desea eliminar este registro?')">Eliminar</a>
 								</td>
 							</tr>
 						</c:forEach>
-						
+
 					</table>
-					</c:if>
-				</form>
+				</c:if>
 			</div>
-		</div>
-	</div>
+		</form>
+	</main>
 </body>
 </html>

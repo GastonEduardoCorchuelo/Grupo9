@@ -8,22 +8,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Lista de usuarios - Tienda genérica</title>
+<link rel="stylesheet" type="text/css" href="./style2.css">
 </head>
 <body>
-	<h2>Usuarios</h2>
-	<div class="row">
-		<div class="card col-md-4">
-			<div class="card-body">
-				<form method="post" action="ControladorUsuarios">
-					<h2>
-						<a href="ControladorUsuarios?action=nuevo">Agregar nuevo
-							usuario</a> &nbsp;&nbsp;&nbsp; <a
-							href="ControladorUsuarios?action=listar">Listar usuarios</a>
-					</h2>
+	 <br>
+	 <br>
+     <main class="container container-form-users">
+				<form class="users-form"  method="post" action="ControladorUsuarios">
+					  <h2>Usuarios</h2>
+					   <div class="botones">
+           				 <ul>
+						<a class="btn"  href="ControladorUsuarios?action=nuevo">Agregar nuevo usuario</a> &nbsp;&nbsp;&nbsp; 
+						<a class="btn"  href="ControladorUsuarios?action=listar">Listar usuarios</a>
+					  </ul>
+					  
 					<p>${message}</p>
 					<c:if test="${usuario != null}">
-						<caption>Listado de usuarios</caption>
-						<table class="table" border="1">
+					
+						<table>
+							<caption>Listado de usuarios</caption>
 							<thead>
 								<tr>
 									<th>Cédula</th>
@@ -51,9 +54,8 @@
 							</c:forEach>
 						</table>
 					</c:if>
+					</div>
 				</form>
-			</div>
-		</div>
-	</div>
+				</main>
 </body>
 </html>

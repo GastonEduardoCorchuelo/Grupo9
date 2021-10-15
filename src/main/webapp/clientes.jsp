@@ -8,24 +8,27 @@
 <head>
 <meta charset="UTF-8">
 <title>Clientes - Tienda Equipo 9</title>
+<link rel="stylesheet" type="text/css" href="./style2.css">
 </head>
 <body>
-	<h2>Clientes</h2>
-	<div class="row">
-		<div class="card col-md-4">
-			<div class="card-body">
-				<form method="post" action="ControladorClientes">
-				
-					<h2>
-						<a href="ControladorClientes?action=nuevo">Agregar nuevo
+	<br>
+	<br>
+	
+			<main class="container container-form-users">
+				<form class="users-form" method="post" action="ControladorClientes">
+				<h2>Clientes</h2>
+					
+					<div class="botones">
+					<ul>
+						<a class="btn" href="ControladorClientes?action=nuevo">Agregar nuevo
 							cliente</a> &nbsp;&nbsp;&nbsp; <a
-							href="ControladorClientes?action=listar">Listar clientes</a>
-					</h2>
+							class="btn" href="ControladorClientes?action=listar">Listar clientes</a>
+					</ul>
 					
 					<p>${message}</p>
 					
 					<c:if test="${cliente != null}">
-					<table class="table" border="1">
+					<table>
 					
 						<caption>Listado de clientes</caption>
 						
@@ -56,9 +59,8 @@
 						
 					</table>
 					</c:if>
+					</div>
 				</form>
-			</div>
-		</div>
-	</div>
+		</main>
 </body>
 </html>
