@@ -21,30 +21,36 @@
 							href="ControladorUsuarios?action=listar">Listar usuarios</a>
 					</h2>
 					<p>${message}</p>
-					<table class="table" border="1">
+					<c:if test="${usuario != null}">
 						<caption>Listado de usuarios</caption>
-						<tr>
-							<th>Cédula</th>
-							<th>Nombre</th>
-							<th>Correo Electrónico</th>
-							<th>Usuario</th>
-							<th>Acciones</th>
-						</tr>
-						<c:forEach var="usuario" items="${usuario}">
-							<tr>
-								<td><c:out value="${usuario.cedula_usuario}" /></td>
-								<td><c:out value="${usuario.nombre_usuario}" /></td>
-								<td><c:out value="${usuario.email_usuario}" /></td>
-								<td><c:out value="${usuario.usuario}" /></td>
-								<td><a
-									href="ControladorUsuarios?action=editar&cedula=<c:out value="${usuario.cedula_usuario}"/>">Editar</a>
-									&nbsp;&nbsp;&nbsp;&nbsp; <a
-									href="ControladorUsuarios?action=eliminar&cedula=<c:out value="${usuario.cedula_usuario}"/>"
-									onclick="return confirm('¿Desea eliminar este registro?')">Eliminar</a>
-								</td>
-							</tr>
-						</c:forEach>
-					</table>
+						<table class="table" border="1">
+							<thead>
+								<tr>
+									<th>Cédula</th>
+									<th>Nombre</th>
+									<th>Correo Electrónico</th>
+									<th>Usuario</th>
+									<th>Acciones</th>
+								</tr>
+							</thead>
+							<c:forEach var="usuario" items="${usuario}">
+								<tbody>
+									<tr>
+										<td><c:out value="${usuario.cedula_usuario}" /></td>
+										<td><c:out value="${usuario.nombre_usuario}" /></td>
+										<td><c:out value="${usuario.email_usuario}" /></td>
+										<td><c:out value="${usuario.usuario}" /></td>
+										<td><a
+											href="ControladorUsuarios?action=editar&cedula=<c:out value="${usuario.cedula_usuario}"/>">Editar</a>
+											&nbsp;&nbsp;&nbsp;&nbsp; <a
+											href="ControladorUsuarios?action=eliminar&cedula=<c:out value="${usuario.cedula_usuario}"/>"
+											onclick="return confirm('¿Desea eliminar este registro?')">Eliminar</a>
+										</td>
+									</tr>
+								</tbody>
+							</c:forEach>
+						</table>
+					</c:if>
 				</form>
 			</div>
 		</div>

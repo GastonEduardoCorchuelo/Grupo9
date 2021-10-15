@@ -106,9 +106,10 @@ public class JSONUsuarios {
 		http.setRequestProperty("Accept", "application/json");
 		http.setRequestProperty("Content-Type", "application/json");
 
-		String data = "{" + "\"cedula_usuario\":\"" + String.valueOf(usuario.getCedula_usuario()) + "\",\"email_usuario\": \""
-				+ usuario.getEmail_usuario() + "\",\"nombre_usuario\": \"" + usuario.getNombre_usuario()
-				+ "\",\"password\":\"" + usuario.getPassword() + "\",\"usuario\":\"" + usuario.getUsuario() + "\"}";
+		String data = "{" + "\"cedula_usuario\":\"" + String.valueOf(usuario.getCedula_usuario())
+				+ "\",\"email_usuario\": \"" + usuario.getEmail_usuario() + "\",\"nombre_usuario\": \""
+				+ usuario.getNombre_usuario() + "\",\"password\":\"" + usuario.getPassword() + "\",\"usuario\":\""
+				+ usuario.getUsuario() + "\"}";
 		byte[] out = data.getBytes(StandardCharsets.UTF_8);
 		OutputStream stream = http.getOutputStream();
 		stream.write(out);

@@ -24,7 +24,9 @@ h1{
     font-size: 40px;
 }
 input[type="text"],
-input[type="password"]{
+input[type="password"],
+input[type="number"],
+input[type="email"]{
     font-size: 20px;
     width: 82%;
     padding: 10px;
@@ -39,7 +41,7 @@ input[type="password"]{
     text-align: center;
     color: #999;
 }
-.button{
+button .submit{
     border: none;
     width: 100%;
     color: white;

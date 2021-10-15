@@ -82,7 +82,6 @@ public class ControladorProveedores extends HttpServlet {
 	private void nuevaEdicion(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException, ParseException {
 		ArrayList<Proveedores> lista = JSONProveedores.getJSON();
-		request.setAttribute("proveedor", lista);
 		Long nit = Long.parseLong(request.getParameter("nit"));
 		for (Proveedores proveedor : lista) {
 			if (proveedor.getNit_proveedor().equals(nit)) {

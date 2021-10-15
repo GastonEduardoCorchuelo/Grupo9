@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Tienda Generica</title>
+<title>Acerca de - Tienda Equipo 9</title>
 </head>
 <body>
      <main class="container container-users-web">
@@ -12,7 +12,6 @@
         <ol>
             <li>Corchuelo Segura Gastón Eduardo</li>
             <li>Gómez Gómez Emilio</li>
-            <li>Gonzáles Gutiérrez Geraldine</li>
             <li>Muñoz Carvajalino Cristian Camilo</li>
             <li>Parraga Peñaloza Juan Camilo</li>
         </ol>

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Lista de clientes - Tienda genérica</title>
+<title>Clientes - Tienda Equipo 9</title>
 </head>
 <body>
 	<h2>Clientes</h2>
@@ -15,14 +15,20 @@
 		<div class="card col-md-4">
 			<div class="card-body">
 				<form method="post" action="ControladorClientes">
+				
 					<h2>
 						<a href="ControladorClientes?action=nuevo">Agregar nuevo
 							cliente</a> &nbsp;&nbsp;&nbsp; <a
 							href="ControladorClientes?action=listar">Listar clientes</a>
 					</h2>
+					
 					<p>${message}</p>
+					
+					<c:if test="${cliente != null}">
 					<table class="table" border="1">
+					
 						<caption>Listado de clientes</caption>
+						
 						<tr>
 							<th>Cédula</th>
 							<th>Dirección</th>
@@ -31,6 +37,7 @@
 							<th>Teléfono</th>
 							<th>Acciones</th>
 						</tr>
+						
 						<c:forEach var="cliente" items="${cliente}">
 							<tr>
 								<td><c:out value="${cliente.cedula_cliente}" /></td>
@@ -46,7 +53,9 @@
 								</td>
 							</tr>
 						</c:forEach>
+						
 					</table>
+					</c:if>
 				</form>
 			</div>
 		</div>

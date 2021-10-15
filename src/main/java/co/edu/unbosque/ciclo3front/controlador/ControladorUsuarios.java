@@ -84,7 +84,6 @@ public class ControladorUsuarios extends HttpServlet {
 	private void nuevaEdicion(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException, ParseException {
 		ArrayList<Usuarios> lista = JSONUsuarios.getJSON();
-		request.setAttribute("usuario", lista);
 		Long cedula = Long.parseLong(request.getParameter("cedula"));
 		for (Usuarios usuario : lista) {
 			if (usuario.getCedula_usuario().equals(cedula)) {
