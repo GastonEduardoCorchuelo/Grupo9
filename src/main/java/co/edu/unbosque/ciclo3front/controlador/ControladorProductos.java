@@ -72,47 +72,68 @@ public class ControladorProductos extends HttpServlet {
 
 	private void cargarProducto(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException, ParseException {
-		Part filePart = request.getPart("archivo");
-		InputStream fileContent = filePart.getInputStream();
-		Reader in = new InputStreamReader(fileContent);
-		final CSVFormat csvFormat = CSVFormat.Builder.create().setHeader().setSkipHeaderRecord(true).build();
-		final Iterable<CSVRecord> elementos = csvFormat.parse(in);
-		ArrayList<Productos> lista = JSONProductos.getJSON();
-		ArrayList<Long> listacodigos = new ArrayList<>();
-		for (Productos producto : lista) {
-			listacodigos.add(producto.getCodigo_producto());
-		}
-		ArrayList<Proveedores> listaproveedores = JSONProveedores.getJSON();
-		ArrayList<Long> listanit = new ArrayList<>();
-		for (Proveedores proveedor : listaproveedores) {
-			listanit.add(proveedor.getNit_proveedor());
-		}
-		for (CSVRecord elemento : elementos) {
-			Long codigo = Long.parseLong(elemento.get("codigo_producto"));
-			String nombre = elemento.get("nombre_producto");
-			Double preciocompra = Double.parseDouble(elemento.get("precio_compra"));
-			Double precioventa = Double.parseDouble(elemento.get("precio_venta"));
-			Double iva = Double.parseDouble(elemento.get("iva_compra"));
-			Long nit = Long.parseLong(elemento.get("nit_proveedor"));
-			Productos producto = new Productos();
-			if (listacodigos.contains(codigo) || !listanit.contains(nit)) {
-				continue;
-			} else {
-				producto.setCodigo_producto(codigo);
-				producto.setNombre_producto(nombre);
-				producto.setPrecio_compra(preciocompra);
-				producto.setPrecio_venta(precioventa);
-				producto.setIva_compra(iva);
-				producto.setNit_proveedor(nit);
-				JSONProductos.postJSON(producto);
-			}
-		}
-		String message = "Lista de productos agregada exitosamente."
-				+ "Aviso: Puede que uno o más productos no se hayan añadido si tenían un código ya existente en la base de datos o si tenían un NIT no registrado.";
-		request.setAttribute("message", message);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("productos.jsp");
-		dispatcher.forward(request, response);
+		boolean existearchivo = false;
+		if (request.getPart("archivo").getSize() > 0) {
+			existearchivo = true;
+		}
+		if (request.getPart("archivo").getSize() <= 0) {
+			existearchivo = false;
+		}
+		if (!existearchivo) {
+			String message = "Error: ningún archivo fue seleccionado.";
+			request.setAttribute("message", message);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("productos.jsp");
+			dispatcher.forward(request, response);
+
+		} else {
+			Part filePart = request.getPart("archivo");
+			InputStream fileContent = filePart.getInputStream();
+			Reader in = new InputStreamReader(fileContent);
+			final CSVFormat csvFormat = CSVFormat.Builder.create().setHeader().setSkipHeaderRecord(true).build();
+			final Iterable<CSVRecord> elementos = csvFormat.parse(in);
+
+			ArrayList<Productos> lista = JSONProductos.getJSON();
+			ArrayList<Long> listacodigos = new ArrayList<>();
+			for (Productos producto : lista) {
+				listacodigos.add(producto.getCodigo_producto());
+			}
+			ArrayList<Proveedores> listaproveedores = JSONProveedores.getJSON();
+			ArrayList<Long> listanit = new ArrayList<>();
+			for (Proveedores proveedor : listaproveedores) {
+				listanit.add(proveedor.getNit_proveedor());
+			}
+			try {
+				for (CSVRecord elemento : elementos) {
+					Long codigo = Long.parseLong(elemento.get("codigo_producto"));
+					String nombre = elemento.get("nombre_producto");
+					Double preciocompra = Double.parseDouble(elemento.get("precio_compra"));
+					Double precioventa = Double.parseDouble(elemento.get("precio_venta"));
+					Double iva = Double.parseDouble(elemento.get("iva_compra"));
+					Long nit = Long.parseLong(elemento.get("nit_proveedor"));
+					Productos producto = new Productos();
+					if (listacodigos.contains(codigo) || !listanit.contains(nit)) {
+						continue;
+					} else {
+						producto.setCodigo_producto(codigo);
+						producto.setNombre_producto(nombre);
+						producto.setPrecio_compra(preciocompra);
+						producto.setPrecio_venta(precioventa);
+						producto.setIva_compra(iva);
+						producto.setNit_proveedor(nit);
+						JSONProductos.postJSON(producto);
+					}
+				}
+				String message = "Lista de productos agregada exitosamente.\nAviso: Puede que uno o más productos no se hayan añadido si tenían un código ya existente en la base de datos o si tenían un NIT no registrado.";
+				request.setAttribute("message", message);
+			} catch (Exception e) {
+				String message = "Error al agregar la lista: Uno o más elementos no fueron compatibles.";
+				request.setAttribute("message", message);
+			}
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("productos.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 	private void listarProductos(HttpServletRequest request, HttpServletResponse response)

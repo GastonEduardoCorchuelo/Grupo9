@@ -8,30 +8,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Clientes - Tienda Equipo 9</title>
-<link rel="stylesheet" type="text/css" href="./style2.css">
+<link rel="stylesheet" type="text/css" href="style2.css">
 </head>
 <body>
-	<br>
-	<br>
-	
-			<main class="container container-form-users">
-				<form class="users-form" method="post" action="ControladorClientes">
-				<h2>Clientes</h2>
-					
-					<div class="botones">
-					<ul>
-						<a class="btn" href="ControladorClientes?action=nuevo">Agregar nuevo
-							cliente</a> &nbsp;&nbsp;&nbsp; <a
-							class="btn" href="ControladorClientes?action=listar">Listar clientes</a>
-					</ul>
-					
-					<p>${message}</p>
-					
-					<c:if test="${cliente != null}">
-					<table>
-					
-						<caption>Listado de clientes</caption>
-						
+	<main class="container container-form-users">
+		<form class="users-form" method="post" action="ControladorClientes">
+			<h2>Clientes</h2>
+
+			<div class="botones">
+				<a class="btn" href="ControladorClientes?action=nuevo">Agregar
+					nuevo cliente</a> &nbsp;&nbsp;&nbsp; <a class="btn"
+					href="ControladorClientes?action=listar">Listar clientes</a>
+			</div>
+
+			<p>${message}</p>
+
+			<c:if test="${cliente != null}">
+				<table>
+					<caption>Listado de clientes</caption>
+					<thead>
 						<tr>
 							<th>Cédula</th>
 							<th>Dirección</th>
@@ -40,8 +35,9 @@
 							<th>Teléfono</th>
 							<th>Acciones</th>
 						</tr>
-						
-						<c:forEach var="cliente" items="${cliente}">
+					</thead>
+					<c:forEach var="cliente" items="${cliente}">
+						<tbody>
 							<tr>
 								<td><c:out value="${cliente.cedula_cliente}" /></td>
 								<td><c:out value="${cliente.direccion_cliente}" /></td>
@@ -55,12 +51,11 @@
 									onclick="return confirm('¿Desea eliminar este registro?')">Eliminar</a>
 								</td>
 							</tr>
-						</c:forEach>
-						
-					</table>
-					</c:if>
-					</div>
-				</form>
-		</main>
+						</tbody>
+					</c:forEach>
+				</table>
+			</c:if>
+		</form>
+	</main>
 </body>
 </html>

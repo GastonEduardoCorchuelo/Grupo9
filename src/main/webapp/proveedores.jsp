@@ -8,29 +8,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Proveedores - Tienda Equipo 9</title>
-<link rel="stylesheet" type="text/css" href="./style2.css">
+<link rel="stylesheet" type="text/css" href="style2.css">
 </head>
 <body>
-
-	<br>
-	<br>
 	<main class="container container-form-users">
 		<form class="users-form" method="post" action="ControladorProveedores">
-			<h2>proveedores</h2>
+			<h2>Proveedores</h2>
+			
 			<div class="botones">
-				<ul>
-					<a class="btn" href="ControladorProveedores?action=nuevo">Agregar
-						nuevo proveedor</a> &nbsp;&nbsp;&nbsp;
-					<a class="btn" href="ControladorProveedores?action=listar">Listar
-						proveedores</a>
-				</ul>
+				<a class="btn" href="ControladorProveedores?action=nuevo">Agregar
+					nuevo proveedor</a> &nbsp;&nbsp;&nbsp; <a class="btn"
+					href="ControladorProveedores?action=listar">Listar proveedores</a>
+			</div>
+			
+			<p>${message}</p>
 
-				<p>${message}</p>
-
-				<c:if test="${proveedor != null}">
-					<table">
-
-						<caption>Listado de proveedores</caption>
+			<c:if test="${proveedor != null}">
+				<table>
+					<caption>Listado de proveedores</caption>
+					<thead>
 						<tr>
 							<th>NIT</th>
 							<th>Nombre</th>
@@ -39,8 +35,9 @@
 							<th>Teléfono</th>
 							<th>Acciones</th>
 						</tr>
-
-						<c:forEach var="proveedor" items="${proveedor}">
+					</thead>
+					<c:forEach var="proveedor" items="${proveedor}">
+						<tbody>
 							<tr>
 								<td><c:out value="${proveedor.nit_proveedor}" /></td>
 								<td><c:out value="${proveedor.nombre_proveedor}" /></td>
@@ -54,11 +51,10 @@
 									onclick="return confirm('¿Desea eliminar este registro?')">Eliminar</a>
 								</td>
 							</tr>
-						</c:forEach>
-
-					</table>
-				</c:if>
-			</div>
+						</tbody>
+					</c:forEach>
+				</table>
+			</c:if>
 		</form>
 	</main>
 </body>

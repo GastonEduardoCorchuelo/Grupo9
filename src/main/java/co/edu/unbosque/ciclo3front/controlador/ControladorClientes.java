@@ -54,7 +54,7 @@ public class ControladorClientes extends HttpServlet {
 				break;
 			case "listar":
 				listarClientes(request, response);
-				break;
+				break;			
 			default:
 				listarClientes(request, response);
 				break;
@@ -62,7 +62,7 @@ public class ControladorClientes extends HttpServlet {
 		} catch (SQLException | ParseException ex) {
 			throw new ServletException(ex);
 		}
-	}
+	}	
 
 	private void listarClientes(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException, ParseException {

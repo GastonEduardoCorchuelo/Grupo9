@@ -8,11 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Formulario de proveedores - Tienda Equipo 9</title>
-<link rel="stylesheet" type="text/css" href="./style2.css">
+<link rel="stylesheet" type="text/css" href="style2.css">
 </head>
 <body>
-	<br>
-	<br>
 	<main class="container container-form-users">
 		<form class="users-form" action="ControladorProveedores" method="post">
 			<h2>proveedores</h2>
@@ -29,7 +27,7 @@
 
 			<div class="field">
 				<label>Dirección:</label> <input type="text"
-					placeholder="Ingrese su direccion" name="direccion"
+					placeholder="Ingrese su dirección" name="direccion"
 					value="<c:out value="${proveedor.direccion_proveedor}"/>" required />
 
 				<label>Teléfono:</label> <input type="text"

@@ -8,11 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Formulario de productos - Tienda Equipo 9</title>
-<link rel="stylesheet" type="text/css" href="./style2.css">
+<link rel="stylesheet" type="text/css" href="style2.css">
 </head>
 <body>
-	<br>
-	<br>
 	 <main  class="container container-form-users">
 		<form class="users-form" action="ControladorProductos" method="post">
 				<h2>Productos</h2>
@@ -46,7 +44,7 @@
 				<c:if test="${producto == null}">
 				<div class="field1">
 						<label>Código del producto:</label>
-						<input type="number" placeholder="Ingrese su codigo" name="codigo" 
+						<input type="number" placeholder="Código del producto" name="codigo" 
 							value="<c:out value="${producto.codigo_producto}"/>" required />
 				</div>
 				</c:if>

@@ -100,7 +100,7 @@ public class ControladorVentas extends HttpServlet {
 			throws IOException, ParseException, ServletException {
 		ArrayList<Clientes> listaclientes = JSONClientes.getJSON();
 		if (request.getParameter("ced").isEmpty()) {
-			String message = "Debe buscar un cliente primero para asignarle la venta.";
+			String message = "Primero debe buscar un cliente para asignarle la venta.";
 			request.setAttribute("message", message);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("ventas.jsp");
 			dispatcher.forward(request, response);

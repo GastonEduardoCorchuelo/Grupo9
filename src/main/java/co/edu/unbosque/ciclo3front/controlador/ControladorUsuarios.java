@@ -58,6 +58,9 @@ public class ControladorUsuarios extends HttpServlet {
 			case "listar":
 				listarUsuarios(request, response);
 				break;
+			case "principal":
+				redireccionar(request, response);
+				break;
 			default:
 				listarUsuarios(request, response);
 				break;
@@ -65,6 +68,20 @@ public class ControladorUsuarios extends HttpServlet {
 		} catch (SQLException | ParseException ex) {
 			throw new ServletException(ex);
 		}
+	}
+
+	private void redireccionar(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ParseException, ServletException {
+		ArrayList<Usuarios> lista = JSONUsuarios.getJSON();
+		String nombre = request.getParameter("username");
+		for (Usuarios usuario : lista) {
+			if (usuario.getNombre_usuario().equals(nombre)) {
+				request.setAttribute("usuario", usuario);
+			}
+		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher("Principal.jsp");
+		dispatcher.forward(request, response);
+
 	}
 
 	private void listarUsuarios(HttpServletRequest request, HttpServletResponse response)

@@ -8,12 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Formulario de clientes - Tienda Equipo 9</title>
-<link rel="stylesheet" type="text/css" href="./style2.css">
+<link rel="stylesheet" type="text/css" href="style2.css">
 </head>
 <body>
-	<br>
-    <br>
-
     <main class="container container-form-users">
 		<form class="users-form" action="ControladorClientes" method="post">
 				 <h2>Clientes</h2>
@@ -21,11 +18,11 @@
 				
 					 <div class="field">
 					<label>Dirección:</label>
-					<input type="text" name="direccion" 
+					<input type="text" placeholder="Ingrese su dirección" name="direccion" 
 						value="<c:out value="${cliente.direccion_cliente}"/>" required />
 						
 					<label>Correo electrónico:</label>
-					<input type="email" placeholder="Ingrese su direccion" placeholder="Ingrese Su Correo"  name="email" 
+					<input type="email" placeholder="Ingrese su correo electrónico"  name="email" 
 						value="<c:out value="${cliente.email_cliente}"/>" required />
 					</div>
 					 <div class="field">	
@@ -68,6 +65,5 @@
 			
 		</form>
 		</main>
-	</div>
 </body>
 </html>

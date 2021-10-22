@@ -1,0 +1,131 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	background-image: url('fondo.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+
+body {
+	margin: 0;
+	font-family: 'Poppins', sans-serif;
+	overflow: scroll;
+}
+
+/* Barra de navegación */
+.topnav {
+	position: absolute;
+	margin: 0 auto;
+	height: 70px;
+	width: 100%;
+	padding: 0;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #0f4c81;
+	box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .2);
+}
+
+.topnav p {
+	margin-top: 7px;
+	float: left;
+	display: block;
+	color: #F5ECEA;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 25px;
+}
+
+.topnav img {
+	height: 35px;
+	float: left;
+	margin-right: 7px;
+}
+
+/* Enlaces de la barra de navegación */
+.topnav a {
+	margin-top: 7px;
+	float : left;
+	display: block;
+	color: #F5ECEA;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+/* Contenedor del botón desplegable */
+.dropdown {
+	margin-top: 7px;
+	float: left;
+	display: block;
+	color: #F5ECEA;
+	text-align: center;
+	padding: 1em;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+/* Botón desplegable */
+.dropdown dropbtn {
+	margin-top: 7px;
+	float: left;
+	display: block;
+	color: #F5ECEA;
+	text-align: center;
+	padding: 10%;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+/* Contenido dentro del botón desplegable (Oculto por defecto) */
+.dropdown-content {
+	display: none;
+	right: 0px;
+	position: relative;
+	background-color: #0f4c81;
+	color: #F5ECEA; min-width : 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	min-width: 160px;
+}
+
+/* Estilo de los enlaces dentro de botón desplegable*/
+.dropdown-content a {
+	float: none;
+	color: #F5ECEA;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+
+/* Fondo de enlaces de topnav al pasar por encima con el ratón */
+.topnav a:hover, .dropdown:hover .dropbtn {
+	-moz-border-radius-topleft: 10px;
+	-moz-border-radius-topright: 10px;
+	-moz-border-radius-bottomright: 10px;
+	-moz-border-radius-bottomleft: 10px;
+	-webkit-border-radius: 10px 10px 10px1 0px;
+	border-radius: 10px 10px 10px 10px;
+	color: #1003ab;
+	background-color: #598bc1;
+}
+
+/* Fondo de enlaces dentro de botón desplegable al pasar por encima con el ratón */
+.dropdown-content a:hover {
+	background-color: #598bc1;
+	color: #1003ab;
+}
+
+/* Muestra los enlaces del botón desplegable al pasar por encima con el ratón */
+.dropdown:hover .dropdown-content {
+	display: block;
+}

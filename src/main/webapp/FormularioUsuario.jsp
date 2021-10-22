@@ -8,22 +8,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Formulario de usuarios - Tienda Equipo 9</title>
-<link rel="stylesheet" type="text/css" href="./style2.css">
+<link rel="stylesheet" type="text/css" href="style2.css">
 </head>
-<body>
-	 <br>
-     <br>
-     
+<body>  
 	<main class="container container-form-users">
 		<form class="users-form"  action="ControladorUsuarios" method="post">
 				<h2>Usuarios</h2>
-				
-				
-				
 					
 					<div class="field">
 					<label>Correo electrónico:</label>
-					<input type="email" placeholder="Ingrese Su Correo"
+					<input type="email" placeholder="Ingrese su correo" name="email"
 						value="<c:out value="${usuario.email_usuario}"/>" required />
 						
 					<label>Nombre:</label>

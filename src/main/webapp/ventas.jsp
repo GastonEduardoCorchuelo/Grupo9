@@ -8,11 +8,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Ventas - Tienda Equipo 9</title>
-<link rel="stylesheet" type="text/css" href="./style2.css">
+<link rel="stylesheet" type="text/css" href="style2.css">
 </head>
 <body>
-	<br>
-	<br>
 	<main class="container container-form-users">
 		<form class="users-form" action="ControladorVentas" method="post">
 			<h2>Ventas</h2>
@@ -21,7 +19,6 @@
 
 
 			<div class="field1">
-
 
 				<label for="cedula">Cedula:</label> <input type="number"
 					name="cedula">
@@ -32,110 +29,90 @@
 				<input type="hidden" name="cod"
 					value="<c:out value="${producto.codigo_producto}"/>" readonly>
 				<input type="hidden" name="cant" value="<c:out value="${cant}"/>"
-					readonly>
-
+					readonly> <label for="cedula">Cliente:</label><input
+					type="text" name="cliente"
+					value="<c:out value="${cliente.nombre_cliente}"/>" readonly>
 			</div>
 
-			<div class="field1">
-				<label for="cedula">Cliente:</label><input type="text"
-					name="cliente" value="<c:out value="${cliente.nombre_cliente}"/>"
-					readonly>
-
+			<div class="borde">
+			
+				<div class="field2">
+					<label>Código de producto:</label> <input type="number"
+						name="codigo">
+					<button class="btn-ventas" name="action" value="consultar_producto">Consultar
+						Producto</button>
+				</div>
+				
+				<div class="field3">
+					<label>Nombre del producto:</label> <input type="text"
+						name="nombre_producto"
+						value="<c:out value="${producto.nombre_producto}" />" readonly>
+					<label>Valor del producto(Unidad): $</label> <input type="number"
+						name="precio" value="<c:out value="${producto.precio_venta}" />"
+						readonly> <label>IVA: $</label> <input type="number"
+						name="iva" value="<c:out value="${producto.iva_compra}" />"
+						readonly>
+				</div>
+				
 			</div>
 
-
-
-			<div class="field1">
-				<label>Código de producto:</label> <input type="number"
-					name="codigo">
-				<button class="btn-ventas" name="action" value="consultar_producto">Consultar
-					Producto</button>
-
-			</div>
-
-			<div class="field1">
-				<label>Nombre Producto</label> <input type="text"
-					name="nombre_producto"
-					value="<c:out value="${producto.nombre_producto}" />" readonly>
-			</div>
-			<div class="field1">
-				<label>Valor del producto(Unidad): $</label> <input type="number"
-					name="precio" value="<c:out value="${producto.precio_venta}" />"
-					readonly>
-			</div>
-			<div class="field1">
-				<label>IVA: $</label> <input type="number" name="iva"
-					value="<c:out value="${producto.iva_compra}" />" readonly>
-
-			</div>
-
-			<div class="field">
+			<div class="field4">
 				<label>Cantidad:</label> <input type="number" name="cantidad">
 				<button class="btn-ventas" name="action"
 					value="calcular_valor_producto">Calcular valor</button>
 			</div>
 
 
-			<div class="field">
+			<div class="field5">
 				<label>Valor de la venta: $</label> <input type="number"
 					name="valor_venta" value="<c:out value="${valor_venta}" />"
-					readonly>
-			</div>
-			<div class="field1">
-				<label>Valor IVA: $</label> <input type="number" name="iva_venta"
-					value="<c:out value="${iva_venta}" />" readonly>
-			</div>
-			<div class="field1">
+					readonly> <label>Valor IVA: $</label> <input type="number"
+					name="iva_venta" value="<c:out value="${iva_venta}" />" readonly>
 				<label>Valor total: $</label> <input type="number"
 					name="total_venta" value="<c:out value="${total_venta}" />"
 					readonly>
 			</div>
 
-
-
 			<div class="botones">
-				<ul>
-					<button class="btn" name="action" value="agregar">Registrar
-						venta</button>
+				<button class="btn" name="action" value="agregar">Registrar
+					venta</button>
 
-					<a class="btn" href="ControladorVentas?action=listar">Listar
-						ventas</a>
-				</ul>
-
-				<c:if test="${venta != null}">
-					<div class="campos-operacion">
-
-						<table>
-							<caption>Listado de ventas</caption>
-							<tr>
-								<th>Código de factura</th>
-								<th>Cédula del cliente</th>
-								<th>Nombre del cliente</th>
-								<th>Producto</th>
-								<th>Cantidad</th>
-								<th>Valor de la venta</th>
-								<th>Total IVA</th>
-								<th>Total venta</th>
-								<th>Fecha</th>
-							</tr>
-
-							<c:forEach var="venta" items="${venta}">
-								<tr>
-									<td><c:out value="${venta.codigo_venta}" /></td>
-									<td><c:out value="${venta.cedula_cliente}" /></td>
-									<td><c:out value="${venta.nombre_cliente}" /></td>
-									<td><c:out value="${venta.nombre_producto}" /></td>
-									<td><c:out value="${venta.cantidad_producto}" /></td>
-									<td><c:out value="${venta.valor_venta}" /></td>
-									<td><c:out value="${venta.iva_venta}" /></td>
-									<td><c:out value="${venta.total_venta}" /></td>
-									<td><c:out value="${venta.fecha}" /></td>
-							</c:forEach>
-
-						</table>
-					</div>
-				</c:if>
+				<a class="btn" href="ControladorVentas?action=listar">Listar
+					ventas</a>
 			</div>
+
+			<c:if test="${venta != null}">
+				<div class="campos-operacion">
+
+					<table>
+						<caption>Listado de ventas</caption>
+						<tr>
+							<th>Código de factura</th>
+							<th>Cédula del cliente</th>
+							<th>Nombre del cliente</th>
+							<th>Producto</th>
+							<th>Cantidad</th>
+							<th>Valor de la venta</th>
+							<th>Total IVA</th>
+							<th>Total venta</th>
+							<th>Fecha</th>
+						</tr>
+
+						<c:forEach var="venta" items="${venta}">
+							<tr>
+								<td><c:out value="${venta.codigo_venta}" /></td>
+								<td><c:out value="${venta.cedula_cliente}" /></td>
+								<td><c:out value="${venta.nombre_cliente}" /></td>
+								<td><c:out value="${venta.nombre_producto}" /></td>
+								<td><c:out value="${venta.cantidad_producto}" /></td>
+								<td><c:out value="${venta.valor_venta}" /></td>
+								<td><c:out value="${venta.iva_venta}" /></td>
+								<td><c:out value="${venta.total_venta}" /></td>
+								<td><c:out value="${venta.fecha}" /></td>
+						</c:forEach>
+					</table>
+				</div>
+			</c:if>
 		</form>
 	</main>
 </body>
